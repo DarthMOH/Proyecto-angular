@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+  <table class="table" style="text-align:center">
+
+    <thead>
+      <tr style="text-align:center;">
+        <th scope="col">Ocupación</th>
+        <th scope="col">Nombre departamento</th>
+        <th scope="col">Persona Asignada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mesa of mesas">
+        <td>{{mesa.data.mesa}}</td>
+        <td>{{mesa.data.tipo}}</td>
+        <td>{{mesa.data.persona}}</td>
+        <td><button class="btn btn-danger" (click)="editMesa(mesa.id)">EDITAR</button></td>
+        <td><button class="btn btn-danger" (click)="deleteMesa(mesa.id)">BORRAR</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <input id="botonAgregar" class="btn btn-danger" style="margin-left: 3%" type="button" (click)="agregaVisible('visible')" value="Agregar nueva mesa">
+
+  <form id="formMesa" (ngSubmit)="newMesa(newMesaForm.value)" [formGroup]="newMesaForm">
+
+        <h4 style="margin-left: 2%; margin-bottom: 1%">Añadir elemento</h4>
+
+        <label style="margin-left: 3%; margin-right: 1%" class="autoPadding" for="tipo">Departamento:</label>
+        <select id="tipo" formControlName="tipo">
+          <option value="D. Samba">Samba</option>
+          <option value="D. PHP">PHP</option>
+          <option value="D. HTML5">HTML5</option>
+          <option value="D. Angular">Angular</option>
+        </select>
+
+        <label style="margin-left: 3%; margin-right: 1%" class="autoPadding" for="persona">Persona asignada:</label>
+        <select id="persona" formControlName="persona">
+          <option *ngFor="let persona of personas" value="{{persona.data.nombre}}, {{persona.data.apellidos}}">{{persona.data.nombre}},  {{persona.data.apellidos}}</option>
+        </select>
+
+        <label style="margin-left: 3%; margin-right: 1%" for="mesa">Ocupación:</label>
+        <select id="mesa" formControlName="mesa">
+          <option value="Jefe de proyecto">Jefe de proyecto</option>
+          <option value="Programador Junior">Programador Junior</option>
+          <option value="Programador">Programador</option>
+          <option value="Master">Master</option>
+        </select>
+
+        <input id="botonInput" type="submit" style="margin-left: 3%; margin-right: 3%" class="btn btn-danger" [disabled]="!newMesaForm.valid" value="ADD" />
+        <input id="botonInputCancelar" class="btn btn-danger" type="button" (click)="agregaVisible('hidden')" value="Cancelar">
+
+</form>
+
+<app-footer></app-footer>

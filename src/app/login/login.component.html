@@ -1,0 +1,14 @@
+<div *ngIf="auth.user | async as user; else login">
+
+</div>
+
+<ng-template #login id="loginDiv">
+  <div id="bienvenida">
+    <h2>Administracion equipos marselo</h2>
+    <br>
+    <form class="form">
+
+      <button (click)="auth.glogin()" class="btn btn-secondary">INICIAR SESIÓN</button>
+    </form>
+  </div>
+</ng-template>

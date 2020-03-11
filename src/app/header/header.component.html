@@ -1,0 +1,25 @@
+<div style="margin-bottom: 3%">
+
+  <h1>Administración equipos Marselo</h1>
+
+  <nav>
+    <ul>
+      <li>
+        <a class="btn btn-secondary" [routerLink]="['/main']" [routerLinkActive]="['actived']">Main</a>
+      </li>
+      <li>
+        <a class="btn btn-secondary" [routerLink]="['/personal']" [routerLinkActive]="['actived']">Personal</a>
+      </li>
+      <li>
+        <a class="btn btn-secondary" (click)="auth.logout()" [routerLink]="['']">Cerrar sesion</a>
+      </li>
+    </ul>
+  </nav>
+
+  <h3>Bienvenido {{userName}}</h3>
+
+</div>
+
+<router-outlet>
+
+</router-outlet>
